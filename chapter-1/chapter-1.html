@@ -174,7 +174,6 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 has-children"><a class="reference internal" href="../chapter-2/chapter-2.html">Chapter 2 - Exact Generation of Random Variates</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../chapter-2/LCG.html">Uniform random variate generation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter-2/inversion.html">Inversion</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../chapter-2/rejection.html">Rejection Sampling</a></li>
 </ul>
 </li>
 </ul>
@@ -324,6 +323,7 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estimating-pi">Estimating <span class="math notranslate nohighlight">\(\pi\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discrete-probability-on-a-computer">Discrete Probability on a Computer</a></li>
 </ul>
             </nav>
         </div>
@@ -348,8 +348,6 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-
-<span class="c1"># Create a list of numbers from 0 to 10</span>
 </pre></div>
 </div>
 </div>
@@ -388,7 +386,9 @@ x^2 + y^2 \leq 1
 <p>holds. Let us do this as follows. We will do some extra steps to demonstrate the convergence.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">N</span> <span class="o">=</span> <span class="mi">10001</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span> <span class="c1"># calling it again to have consistent generation in the cell</span>
+
+<span class="n">N</span> <span class="o">=</span> <span class="mi">10000</span>
 <span class="n">pi_estimate</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
@@ -400,9 +400,11 @@ x^2 + y^2 \leq 1
 
 <span class="n">printIndex</span> <span class="o">=</span> <span class="mi">0</span>
 
+<span class="n">x</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span> <span class="c1"># to draw from [-1, 1]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span> <span class="c1"># to draw from [-1, 1]</span>
+
 <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
-    <span class="n">x</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span> <span class="c1"># to draw from [-1, 1]</span>
-    <span class="n">y</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span> <span class="c1"># to draw from [-1, 1]</span>
+
     <span class="c1"># We will see the reason for this in next weeks</span>
 
     <span class="k">if</span> <span class="n">x</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">y</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
@@ -443,7 +445,59 @@ x^2 + y^2 \leq 1
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/84d6f97a697e328ed558de6d02c19767975d3eb9e43f576f52bb3dd79163de71.png" src="../_images/84d6f97a697e328ed558de6d02c19767975d3eb9e43f576f52bb3dd79163de71.png" />
+<img alt="../_images/25d38134540f1f7466eb4d650109280e62a7a7c5a0c420f7a1c3e7d5651f4e64.png" src="../_images/25d38134540f1f7466eb4d650109280e62a7a7c5a0c420f7a1c3e7d5651f4e64.png" />
+</div>
+</div>
+</section>
+<section id="discrete-probability-on-a-computer">
+<h2>Discrete Probability on a Computer<a class="headerlink" href="#discrete-probability-on-a-computer" title="Permalink to this heading">#</a></h2>
+<p>Before we delve into complicated sampling problems, we can start with how to define, plot, and visualise discrete probability distributions. The best way to represent a discrete probability distribution on a computer is through its <em>states</em> and <em>probabilities</em>. For example, consider the following discrete probability distribution for a random variable <span class="math notranslate nohighlight">\(X\)</span>:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+\mathbb{P}(X = 0) = 0.2, \quad \mathbb{P}(X = 1) = 0.3, \quad \mathbb{P}(X = 2) = 0.5.
+\end{align*}\]</div>
+<p>We can represent this distribution as a list of states and a list of probabilities. For example, we can define the states as follows:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+\mathsf{s} = [0, 1, 2]
+\end{align*}\]</div>
+<p>and the probabilities as follows:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+\mathsf{w} = [0.2, 0.3, 0.5].
+\end{align*}\]</div>
+<p>In code this would correspond to the following.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">s</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="n">p</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">stem</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">markerfmt</span><span class="o">=</span><span class="s1">&#39;ko&#39;</span><span class="p">,</span> <span class="n">linefmt</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;StemContainer object of 3 artists&gt;
+</pre></div>
+</div>
+<img alt="../_images/bb5a121df719ee84bf1086f2cc4824291c75457a402a6dc4eda6f7baa62ea889.png" src="../_images/bb5a121df719ee84bf1086f2cc4824291c75457a402a6dc4eda6f7baa62ea889.png" />
+</div>
+</div>
+<p>We can also easily plot its CDF.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cdf</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">cdf</span><span class="p">,</span> <span class="s1">&#39;ro-&#39;</span><span class="p">,</span> <span class="n">drawstyle</span><span class="o">=</span><span class="s1">&#39;steps-post&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x12d2801c0&gt;]
+</pre></div>
+</div>
+<img alt="../_images/64ecbf17a41e622d0f8c82eb92c06edcd7a2fdb88839246ac5f635dab1b9efc2.png" src="../_images/64ecbf17a41e622d0f8c82eb92c06edcd7a2fdb88839246ac5f635dab1b9efc2.png" />
 </div>
 </div>
 </section>
@@ -513,6 +567,7 @@ x^2 + y^2 \leq 1
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estimating-pi">Estimating <span class="math notranslate nohighlight">\(\pi\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discrete-probability-on-a-computer">Discrete Probability on a Computer</a></li>
 </ul>
   </nav></div>
 
