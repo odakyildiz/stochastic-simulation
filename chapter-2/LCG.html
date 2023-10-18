@@ -7,7 +7,8 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
     <title>Uniform random variate generation &#8212; Stochastic Simulation</title>
   
   
@@ -18,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -37,8 +38,9 @@
     <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=927b94d3fcb96560df09" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=927b94d3fcb96560df09" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=927b94d3fcb96560df09"></script>
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -78,6 +80,15 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -165,6 +176,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="inversion.html">Inversion</a></li>
 <li class="toctree-l2"><a class="reference internal" href="transformation.html">Transformation methods</a></li>
 <li class="toctree-l2"><a class="reference internal" href="rejection-sampling.html">Rejection sampling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="composition.html">Composition</a></li>
 </ul>
 </li>
 </ul>
@@ -275,10 +287,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
@@ -286,7 +298,7 @@ document.write(`
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -315,7 +327,7 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <div class="tex2jax_ignore mathjax_ignore section" id="uniform-random-variate-generation">
+  <section class="tex2jax_ignore mathjax_ignore" id="uniform-random-variate-generation">
 <h1>Uniform random variate generation<a class="headerlink" href="#uniform-random-variate-generation" title="Permalink to this heading">#</a></h1>
 <p>This chapter is about exact generation of random variates. We mainly classify this into two methods: (i) Direct sampling, (ii) Rejection sampling. These methods are both exact and simple to implement.</p>
 <p>As seen in the course, we can use linear congruential generator for this purpose. Linear congruential generators (LCGs from now on) are based on simulating a recursion:</p>
@@ -359,16 +371,7 @@ u_n = \frac{x_n}{m} \in [0, 1) \quad \quad \forall n.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="k">def</span> <span class="nf">lcg</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">x0</span><span class="p">):</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;matplotlib&#39;
-</pre></div>
-</div>
+<img alt="../_images/a9c02b3353a3ce5f909209f83fe38415fbe5079a5ac8a020f1d3386c82ed62e6.png" src="../_images/a9c02b3353a3ce5f909209f83fe38415fbe5079a5ac8a020f1d3386c82ed62e6.png" />
 </div>
 </div>
 <p>Not bad! But how do we choose <span class="math notranslate nohighlight">\(a, b, m\)</span>? We need to choose them in such a way that the sequence <span class="math notranslate nohighlight">\(u_n\)</span> is <em>random enough</em>. Note that this can be tricky.</p>
@@ -588,7 +591,7 @@ u_n = \frac{x_n}{m} \in [0, 1) \quad \quad \forall n.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/57bbe25d6e5e31026624e0b08c41110390cca8a75a1376c06eb51cec580f0c12.png" src="../_images/57bbe25d6e5e31026624e0b08c41110390cca8a75a1376c06eb51cec580f0c12.png" />
+<img alt="../_images/b915f363cba61b65504a2141177a3a0f587c468f9f18c00c18d989772a4ee693.png" src="../_images/b915f363cba61b65504a2141177a3a0f587c468f9f18c00c18d989772a4ee693.png" />
 </div>
 </div>
 <p>Needless to say, this will give us a perfect Gaussian sample too.</p>
@@ -616,10 +619,10 @@ u_n = \frac{x_n}{m} \in [0, 1) \quad \quad \forall n.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d0cd3f0dfe0284a0bbfa9fe07bae90b69cd441be1d45723eb845b6446cf04e68.png" src="../_images/d0cd3f0dfe0284a0bbfa9fe07bae90b69cd441be1d45723eb845b6446cf04e68.png" />
+<img alt="../_images/caa603ade80d818e908a850e201c6f34ce3a42af269d9db6b2b03959fe245d98.png" src="../_images/caa603ade80d818e908a850e201c6f34ce3a42af269d9db6b2b03959fe245d98.png" />
 </div>
 </div>
-</div>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -646,11 +649,10 @@ u_n = \frac{x_n}{m} \in [0, 1) \quad \quad \forall n.
 
               
               
-                <footer class="bd-footer-article">
-                  
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="chapter-2.html"
@@ -670,10 +672,7 @@ u_n = \frac{x_n}{m} \in [0, 1) \quad \quad \forall n.
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -722,8 +721,8 @@ By Omer Deniz Akyildiz
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=927b94d3fcb96560df09"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=927b94d3fcb96560df09"></script>
 
   <footer class="bd-footer">
   </footer>
