@@ -19,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=ac02cc09edc035673794" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -38,9 +38,9 @@
     <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=927b94d3fcb96560df09" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=927b94d3fcb96560df09" />
-  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=927b94d3fcb96560df09"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -54,6 +54,7 @@
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
@@ -66,7 +67,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="canonical" href="https://akyildiz.me/teaching/stsim/chapter-2/chapter-2.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Uniform random variate generation" href="LCG.html" />
+    <link rel="next" title="Section 2.1" href="sec-2-1.html" />
     <link rel="prev" title="Chapter 1 - Introduction" href="../chapter-1/chapter-1.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -170,11 +171,20 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../chapter-1/chapter-1.html">Chapter 1 - Introduction</a></li>
 <li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Chapter 2 - Exact Generation of Random Variates</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="LCG.html">Uniform random variate generation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="inversion.html">Inversion</a></li>
-<li class="toctree-l2"><a class="reference internal" href="transformation.html">Transformation methods</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rejection-sampling.html">Rejection sampling</a></li>
-<li class="toctree-l2"><a class="reference internal" href="composition.html">Composition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sec-2-1.html">Section 2.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Example-2-1.html">Example 2.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Example-2-2.html">Example 2.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Example-2-5.html">Example 2.5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Example-2-6.html">Example 2.6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Example-2-8.html">Example 2.8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Example-2-12.html">Example 2.12</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Example-2-13.html">Example 2.13</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Example-2-14.html">Example 2.14</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter-3/chapter-3.html">Chapter 3 - Probabilistic Modelling and Inference</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter-3/Example-3-2.html">Example 3.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter-3/Example-3-3.html">Example 3.3</a></li>
 </ul>
 </li>
 </ul>
@@ -330,11 +340,15 @@ document.write(`
 <p>This chapter is about exact generation of random variates. We mainly classify this into two methods: (i) Direct sampling, (ii) Rejection sampling. These methods are both exact and simple to implement.</p>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="LCG.html">Uniform random variate generation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="inversion.html">Inversion</a></li>
-<li class="toctree-l1"><a class="reference internal" href="transformation.html">Transformation methods</a></li>
-<li class="toctree-l1"><a class="reference internal" href="rejection-sampling.html">Rejection sampling</a></li>
-<li class="toctree-l1"><a class="reference internal" href="composition.html">Composition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sec-2-1.html">Section 2.1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Example-2-1.html">Example 2.1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Example-2-2.html">Example 2.2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Example-2-5.html">Example 2.5</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Example-2-6.html">Example 2.6</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Example-2-8.html">Example 2.8</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Example-2-12.html">Example 2.12</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Example-2-13.html">Example 2.13</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Example-2-14.html">Example 2.14</a></li>
 </ul>
 </div>
 </section>
@@ -379,11 +393,11 @@ document.write(`
       </div>
     </a>
     <a class="right-next"
-       href="LCG.html"
+       href="sec-2-1.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Uniform random variate generation</p>
+        <p class="prev-next-title">Section 2.1</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -436,8 +450,8 @@ By Omer Deniz Akyildiz
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=927b94d3fcb96560df09"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=927b94d3fcb96560df09"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794"></script>
 
   <footer class="bd-footer">
   </footer>
