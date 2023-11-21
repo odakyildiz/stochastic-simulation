@@ -207,6 +207,10 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../chapter-5/Example-5-6.html">Example 5.6</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter-5/Example-5-7.html">Example 5.7</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter-5/Example-5-8.html">Example 5.8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter-5/Example-5-9.html">Example 5.9</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter-5/Example-5-10.html">Example 5.10</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter-5/Example-5-11.html">Example 5.11</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter-5/Example-5-13.html">Example 5.13</a></li>
 </ul>
 </li>
 </ul>
@@ -401,7 +405,7 @@ u_n = \frac{x_n}{m} \in [0, 1) \quad \quad \forall n.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/34c9fde34da51cf8e2eec697287d295b5893b8d16b6afe81f3c271f9864f1d5f.png" src="../_images/34c9fde34da51cf8e2eec697287d295b5893b8d16b6afe81f3c271f9864f1d5f.png" />
+<img alt="../_images/1da4c456ccded36e2dea0411e5b2756c7c3647d4b64a795e3f3b99c79244c604.png" src="../_images/1da4c456ccded36e2dea0411e5b2756c7c3647d4b64a795e3f3b99c79244c604.png" />
 </div>
 </div>
 <p>Not bad! But how do we choose <span class="math notranslate nohighlight">\(a, b, m\)</span>? We need to choose them in such a way that the sequence <span class="math notranslate nohighlight">\(u_n\)</span> is <em>random enough</em>. Note that this can be tricky.</p>
@@ -430,7 +434,7 @@ u_n = \frac{x_n}{m} \in [0, 1) \quad \quad \forall n.
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;$u_{k+1}$ vs $u_k$&#39;)
 </pre></div>
 </div>
-<img alt="../_images/4e2956a91d21532aa35f0018181808a6e471d584679ec72a06ecd25bea42da19.png" src="../_images/4e2956a91d21532aa35f0018181808a6e471d584679ec72a06ecd25bea42da19.png" />
+<img alt="../_images/a69dbabbdfdf6a2580440d4376a2e2f12bd23b53cad31d3203565c9cd7e15306.png" src="../_images/a69dbabbdfdf6a2580440d4376a2e2f12bd23b53cad31d3203565c9cd7e15306.png" />
 </div>
 </div>
 <p>We can see that the choice matters! Although the histogram looks almost uniform, the samples are <em>very</em> structured. This is very crucial in applications to avoid. In most of the applications, uniform pseudo-random numbers are the building block of subsequent sampling algorithms. Let us see how a bad uniform random number generator can ruin our sampling algorithm.</p>
@@ -512,7 +516,7 @@ u_n = \frac{x_n}{m} \in [0, 1) \quad \quad \forall n.
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
 </pre></div>
 </div>
-<img alt="../_images/1f57cac92df9569e1c37f764d8c1171a69684f63ce1b4c7f2c171951e8004c44.png" src="../_images/1f57cac92df9569e1c37f764d8c1171a69684f63ce1b4c7f2c171951e8004c44.png" />
+<img alt="../_images/4e5f429dec3fe5300c1c2cb6cf0150055ea740b55fabed6ab9fbf04ffde8bfbc.png" src="../_images/4e5f429dec3fe5300c1c2cb6cf0150055ea740b55fabed6ab9fbf04ffde8bfbc.png" />
 </div>
 </div>
 <p>As you can see, any correct 2D sample (data points) coming from this Gaussian should be distributed like this, in particular, if we plotted their histograms, we should get an image above that is on the right hand side. Now, let us try to simulate Gaussians using the bad quality LCG we saw above (again below we use Box-Muller method which will be introduced later).</p>
@@ -548,7 +552,7 @@ u_n = \frac{x_n}{m} \in [0, 1) \quad \quad \forall n.
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;$z_2$&#39;)
 </pre></div>
 </div>
-<img alt="../_images/bba759cb3fabb219c5082fff31e723a681b6239210c66a20b156082f353cea6e.png" src="../_images/bba759cb3fabb219c5082fff31e723a681b6239210c66a20b156082f353cea6e.png" />
+<img alt="../_images/c2f984b1c7c9262aff48b7191ff79adc54a55f551f0ccab4bcf1d39816b09a33.png" src="../_images/c2f984b1c7c9262aff48b7191ff79adc54a55f551f0ccab4bcf1d39816b09a33.png" />
 </div>
 </div>
 <p>What happened? Our Gaussian samples look horrible, it reflects the LCG quality. Therefore, it is in general a bad idea to use custom LCG generators. We turn below to a good quality one.</p>
@@ -574,7 +578,7 @@ u_n = \frac{x_n}{m} \in [0, 1) \quad \quad \forall n.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/92575d2667c322b2312cf73c7e5454b5c9a03d59c5ed272a09453364b8602697.png" src="../_images/92575d2667c322b2312cf73c7e5454b5c9a03d59c5ed272a09453364b8602697.png" />
+<img alt="../_images/9e1836344cfeb5af4910643a0f1973395388ce9da9c871c2066702f82b9ed7da.png" src="../_images/9e1836344cfeb5af4910643a0f1973395388ce9da9c871c2066702f82b9ed7da.png" />
 </div>
 </div>
 <p>Using this, let us look at the resulting Gaussian sample.</p>
@@ -602,7 +606,7 @@ u_n = \frac{x_n}{m} \in [0, 1) \quad \quad \forall n.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/fde1ae29454beab1c467a205422fc6c50dcb34d1c7a1393bf6fbf18b393be5ca.png" src="../_images/fde1ae29454beab1c467a205422fc6c50dcb34d1c7a1393bf6fbf18b393be5ca.png" />
+<img alt="../_images/3f88f70b58f7f6dba922c4cfd5dd8cd161cef6ee26d082cbe0a87e3012347247.png" src="../_images/3f88f70b58f7f6dba922c4cfd5dd8cd161cef6ee26d082cbe0a87e3012347247.png" />
 </div>
 </div>
 <p>Much better! To avoid any issues of this sort, we will always advise using <code class="docutils literal notranslate"><span class="pre">numpy</span></code>’s built-in uniform random number generator, namely, <code class="docutils literal notranslate"><span class="pre">numpy.random.uniform</span></code>. This is a good quality uniform random number generator.</p>
@@ -624,7 +628,7 @@ u_n = \frac{x_n}{m} \in [0, 1) \quad \quad \forall n.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/31c7040f9169d9ca984fc25503fce90702aab678b4be80efd638321288de8aee.png" src="../_images/31c7040f9169d9ca984fc25503fce90702aab678b4be80efd638321288de8aee.png" />
+<img alt="../_images/cbf67543a7b204c47a738fa3552e3ffdfadb2fd7505dd47c4778aad8e898b45f.png" src="../_images/cbf67543a7b204c47a738fa3552e3ffdfadb2fd7505dd47c4778aad8e898b45f.png" />
 </div>
 </div>
 <p>Needless to say, this will give us a perfect Gaussian sample too.</p>
@@ -652,7 +656,7 @@ u_n = \frac{x_n}{m} \in [0, 1) \quad \quad \forall n.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/23b6ffc4546aeea0beba6e04dfc464add6735d3a8edf3edf0e82dfd4957dbd82.png" src="../_images/23b6ffc4546aeea0beba6e04dfc464add6735d3a8edf3edf0e82dfd4957dbd82.png" />
+<img alt="../_images/1ce59d1095dffe0f2914f36537e91317b9933466493e4810a348b4e1ab09558e.png" src="../_images/1ce59d1095dffe0f2914f36537e91317b9933466493e4810a348b4e1ab09558e.png" />
 </div>
 </div>
 </section>

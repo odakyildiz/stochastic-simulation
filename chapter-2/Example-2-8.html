@@ -207,6 +207,10 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../chapter-5/Example-5-6.html">Example 5.6</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter-5/Example-5-7.html">Example 5.7</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter-5/Example-5-8.html">Example 5.8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter-5/Example-5-9.html">Example 5.9</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter-5/Example-5-10.html">Example 5.10</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter-5/Example-5-11.html">Example 5.11</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter-5/Example-5-13.html">Example 5.13</a></li>
 </ul>
 </li>
 </ul>
@@ -420,13 +424,13 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/d8/86whr2t12h70n511w7s7cm_w0000gn/T/ipykernel_22117/955486612.py:5: DeprecationWarning: `np.math` is a deprecated alias for the standard library `math` module (Deprecated Numpy 1.25). Replace usages of `np.math` with `math`
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ipython-input-1-069f25697792&gt;:5: DeprecationWarning: `np.math` is a deprecated alias for the standard library `math` module (Deprecated Numpy 1.25). Replace usages of `np.math` with `math`
   return (x**(alpha-1) * (1-x)**(beta-1) * np.math.gamma(alpha+beta) /
-/var/folders/d8/86whr2t12h70n511w7s7cm_w0000gn/T/ipykernel_22117/955486612.py:6: DeprecationWarning: `np.math` is a deprecated alias for the standard library `math` module (Deprecated Numpy 1.25). Replace usages of `np.math` with `math`
+&lt;ipython-input-1-069f25697792&gt;:6: DeprecationWarning: `np.math` is a deprecated alias for the standard library `math` module (Deprecated Numpy 1.25). Replace usages of `np.math` with `math`
   (np.math.gamma(alpha) * np.math.gamma(beta)))
 </pre></div>
 </div>
-<img alt="../_images/07ed02b82e9f0c5f4ac0846e81f8914e130732b9b09a85ef3116aeb1c3b7e35f.png" src="../_images/07ed02b82e9f0c5f4ac0846e81f8914e130732b9b09a85ef3116aeb1c3b7e35f.png" />
+<img alt="../_images/147d5afb22b3a390e8ac81dd77819c1a15a4309ce8d870774f6c7e3593f5bb27.png" src="../_images/147d5afb22b3a390e8ac81dd77819c1a15a4309ce8d870774f6c7e3593f5bb27.png" />
 </div>
 </div>
 <p>One can see the samples on the left that are uniformly distributed. On the right, the histogram of the accepted samples is shown (only accepted <span class="math notranslate nohighlight">\(x\)</span> values which are <code class="docutils literal notranslate"><span class="pre">acc_samples</span></code> in the code). Animating this process is too costly in a notebook but is provided in the course.</p>
