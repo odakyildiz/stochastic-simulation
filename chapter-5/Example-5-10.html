@@ -373,9 +373,6 @@ document.write(`
 <span class="k">def</span> <span class="nf">log_banana</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
     <span class="k">return</span> <span class="o">-</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="mi">10</span> <span class="o">-</span> <span class="n">y</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="mi">10</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="n">y</span> <span class="o">-</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
 
-<span class="k">def</span> <span class="nf">grad_banana</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="n">x</span><span class="o">/</span><span class="mi">5</span> <span class="o">+</span> <span class="mi">8</span> <span class="o">*</span> <span class="n">y</span> <span class="o">*</span> <span class="n">x</span> <span class="o">-</span> <span class="mi">8</span> <span class="o">*</span> <span class="n">x</span><span class="o">**</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">y</span><span class="o">**</span><span class="mi">3</span><span class="p">)</span><span class="o">/</span><span class="mi">5</span> <span class="o">-</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">y</span> <span class="o">+</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">])</span>
-
 <span class="n">N</span> <span class="o">=</span> <span class="mi">1000000</span>
 <span class="n">samples_RW</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="n">N</span><span class="p">))</span>
 
@@ -429,13 +426,13 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ipython-input-1-7830d03b8e64&gt;:50: MatplotlibDeprecationWarning: The collections attribute was deprecated in Matplotlib 3.8 and will be removed two minor releases later.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ipython-input-1-dfcda187d96a&gt;:47: MatplotlibDeprecationWarning: The collections attribute was deprecated in Matplotlib 3.8 and will be removed two minor releases later.
   for c in cnt.collections:
-&lt;ipython-input-1-7830d03b8e64&gt;:57: MatplotlibDeprecationWarning: The collections attribute was deprecated in Matplotlib 3.8 and will be removed two minor releases later.
+&lt;ipython-input-1-dfcda187d96a&gt;:54: MatplotlibDeprecationWarning: The collections attribute was deprecated in Matplotlib 3.8 and will be removed two minor releases later.
   for c in cnt.collections:
 </pre></div>
 </div>
-<img alt="../_images/cb49a9af185c0ff89a695b7a841817114d2004a53ec0d4fc70dc2ad54b8ec6c2.png" src="../_images/cb49a9af185c0ff89a695b7a841817114d2004a53ec0d4fc70dc2ad54b8ec6c2.png" />
+<img alt="../_images/e7211a40e68eb0d99c55edf73c01dc42af6b0291a906c5eb6427f3080542ff5c.png" src="../_images/e7211a40e68eb0d99c55edf73c01dc42af6b0291a906c5eb6427f3080542ff5c.png" />
 </div>
 </div>
 </section>
