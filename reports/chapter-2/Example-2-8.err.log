@@ -1,0 +1,82 @@
+Traceback (most recent call last):
+  File "/Users/odakyildiz/miniconda3/envs/stoch_sim/lib/python3.12/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+  File "/Users/odakyildiz/miniconda3/envs/stoch_sim/lib/python3.12/site-packages/nbclient/client.py", line 1319, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/odakyildiz/miniconda3/envs/stoch_sim/lib/python3.12/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/odakyildiz/miniconda3/envs/stoch_sim/lib/python3.12/asyncio/base_events.py", line 687, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/Users/odakyildiz/miniconda3/envs/stoch_sim/lib/python3.12/site-packages/nbclient/client.py", line 709, in async_execute
+    await self.async_execute_cell(
+  File "/Users/odakyildiz/miniconda3/envs/stoch_sim/lib/python3.12/site-packages/nbclient/client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/Users/odakyildiz/miniconda3/envs/stoch_sim/lib/python3.12/site-packages/nbclient/client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+alpha = 2
+beta = 2
+p_star = 1.5
+
+rng = np.random.default_rng(5)
+
+xx = np.linspace(0, 1, 1000)
+
+n = 5000
+
+fig, axs = plt.subplots(1, 2, figsize=(10, 4))
+
+# for demonstration purposes, we do this in a for loop
+# this can be done all at once
+
+acc_samples = np.array([])
+acc_u = np.array([])
+# note that we do not have to store uniform samples
+# this is again for demonstration of the FTS.
+
+for i in range(n):
+    x = rng.uniform(0, 1)
+    u = rng.uniform(0, p_star)
+
+    if u <= beta_pdf(x, alpha, beta):
+        acc_u = np.append(acc_u, u)
+        acc_samples = np.append(acc_samples, x)
+
+axs[0].plot(xx, beta_pdf(xx, alpha, beta), color='k', linewidth=2)
+axs[0].add_patch(plt.Rectangle((0, 0), 1, p_star, color=[0.8, 0, 0], fill=False, lw=2))
+axs[0].scatter(acc_samples, acc_u, color=[0.8, 0, 0], s=12)
+axs[0].set_xlim(0, 1)
+axs[0].set_ylim(0, 2.1)
+axs[1].cla()
+axs[1].plot(xx, beta_pdf(xx, alpha, beta), color=[0.8, 0, 0], linewidth=2)
+axs[1].hist(acc_samples, bins=100, density=True, color='k')
+axs[1].set_xlim(0, 1)
+plt.show()
+------------------
+
+
+[31m---------------------------------------------------------------------------[39m
+[31mAttributeError[39m                            Traceback (most recent call last)
+[36mCell[39m[36m [39m[32mIn[2][39m[32m, line 25[39m
+[32m     22[39m x = rng.uniform([32m0[39m, [32m1[39m)
+[32m     23[39m u = rng.uniform([32m0[39m, p_star)
+[32m---> [39m[32m25[39m [38;5;28;01mif[39;00m u <= [43mbeta_pdf[49m[43m([49m[43mx[49m[43m,[49m[43m [49m[43malpha[49m[43m,[49m[43m [49m[43mbeta[49m[43m)[49m:
+[32m     26[39m     acc_u = np.append(acc_u, u)
+[32m     27[39m     acc_samples = np.append(acc_samples, x)
+
+[36mCell[39m[36m [39m[32mIn[1][39m[32m, line 5[39m, in [36mbeta_pdf[39m[34m(x, alpha, beta)[39m
+[32m      4[39m [38;5;28;01mdef[39;00m[38;5;250m [39m[34mbeta_pdf[39m(x, alpha, beta):
+[32m----> [39m[32m5[39m     [38;5;28;01mreturn[39;00m (x**(alpha-[32m1[39m) * ([32m1[39m-x)**(beta-[32m1[39m) * [43mnp[49m[43m.[49m[43mmath[49m.gamma(alpha+beta) /
+[32m      6[39m             (np.math.gamma(alpha) * np.math.gamma(beta)))
+
+[36mFile [39m[32m~/miniconda3/envs/stoch_sim/lib/python3.12/site-packages/numpy/__init__.py:795[39m, in [36m__getattr__[39m[34m(attr)[39m
+[32m    792[39m     [38;5;28;01mimport[39;00m[38;5;250m [39m[34;01mnumpy[39;00m[34;01m.[39;00m[34;01mchar[39;00m[38;5;250m [39m[38;5;28;01mas[39;00m[38;5;250m [39m[34;01mchar[39;00m
+[32m    793[39m     [38;5;28;01mreturn[39;00m char.chararray
+[32m--> [39m[32m795[39m [38;5;28;01mraise[39;00m [38;5;167;01mAttributeError[39;00m([33mf[39m[33m"[39m[33mmodule [39m[38;5;132;01m{[39;00m[34m__name__[39m[38;5;132;01m!r}[39;00m[33m has no attribute [39m[38;5;132;01m{[39;00mattr[38;5;132;01m!r}[39;00m[33m"[39m)
+
+[31mAttributeError[39m: module 'numpy' has no attribute 'math'
+

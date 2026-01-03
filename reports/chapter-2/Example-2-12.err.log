@@ -1,0 +1,140 @@
+Traceback (most recent call last):
+  File "/Users/odakyildiz/miniconda3/envs/stoch_sim/lib/python3.12/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+  File "/Users/odakyildiz/miniconda3/envs/stoch_sim/lib/python3.12/site-packages/nbclient/client.py", line 1319, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/odakyildiz/miniconda3/envs/stoch_sim/lib/python3.12/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/odakyildiz/miniconda3/envs/stoch_sim/lib/python3.12/asyncio/base_events.py", line 687, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/Users/odakyildiz/miniconda3/envs/stoch_sim/lib/python3.12/site-packages/nbclient/client.py", line 709, in async_execute
+    await self.async_execute_cell(
+  File "/Users/odakyildiz/miniconda3/envs/stoch_sim/lib/python3.12/site-packages/nbclient/client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/Users/odakyildiz/miniconda3/envs/stoch_sim/lib/python3.12/site-packages/nbclient/client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Sampling from Gamma(2,1) using rejection sampling
+
+# Gamma(alpha, 1) density
+def gamma_density(x, alpha):
+    return x**(alpha - 1) * np.exp(-x) / np.math.factorial(alpha - 1)
+
+def exponential_density(x, lam):
+    return lam * np.exp(-lam * x)
+
+def M(alpha, lam):
+    return ((alpha - 1)/(1 - lam))**(alpha - 1) * np.exp(-(alpha - 1)) / (lam * np.math.factorial(alpha-1))
+
+def gamma_rejection_sampling(alpha, lam, n):
+    x = np.array([])
+    acc = 0
+    for i in range(n):
+        x_prime = np.random.exponential(1/lam)
+        u = np.random.uniform(0, 1)
+        if u < gamma_density(x_prime, alpha) / (M(alpha, lam) * exponential_density(x_prime, lam)):
+            x = np.append(x, x_prime)
+            acc += 1
+
+    return x, acc/n
+
+alpha = 2
+lam_1 = 0.01
+n = 10000
+
+x_lam_1, acc_rate_1 = gamma_rejection_sampling(alpha, lam_1, n)
+
+alpha = 2
+lam_2 = 1/alpha
+
+x_lam_2, acc_rate_2 = gamma_rejection_sampling(alpha, lam_2, n)
+
+xx = np.linspace(0, 10, 100)
+fig, axs = plt.subplots(2, 2, figsize=(7, 7), width_ratios=[1, 1], height_ratios=[1, 1])
+axs[0, 0].plot(xx, gamma_density(xx, alpha), color=[0.8, 0, 0], linewidth=2)
+axs[0, 0].plot(xx, M(alpha, lam_1) * exponential_density(xx, lam_1), color='k', linewidth=2)
+axs[0, 0].set_xlim(0, 10)
+axs[0, 0].set_ylim(0, 1)
+axs[0, 0].set_title('$\lambda$ = 0.001')
+axs[0, 0].legend(['Gamma(2,1)', '$M * q_\lambda(x)$'])
+axs[0, 1].plot(xx, gamma_density(xx, alpha), color=[0.8, 0, 0], linewidth=2)
+axs[0, 1].plot(xx, M(alpha, lam_2) * exponential_density(xx, lam_2), color='k', linewidth=2)
+axs[0, 1].legend(['Gamma(2,1)', '$M * q_\lambda(x)$'])
+axs[0, 1].set_xlim(0, 10)
+axs[0, 1].set_ylim(0, 1)
+axs[0, 1].set_title('$\lambda$ = 0.5 (optimal)')
+axs[1, 0].plot(xx, gamma_density(xx, alpha), color=[0.8, 0, 0], linewidth=2)
+axs[1, 0].hist(x_lam_1, bins=50, density=True, color='k', alpha=1)
+axs[1, 0].set_xlim(0, 10)
+axs[1, 0].set_ylim(0, 1)
+axs[1, 0].set_title('acceptance rate: ' + str(acc_rate_1))
+axs[1, 1].plot(xx, gamma_density(xx, alpha), color=[0.8, 0, 0], linewidth=2)
+axs[1, 1].hist(x_lam_2, bins=50, density=True, color='k', alpha=1)
+axs[1, 1].set_xlim(0, 10)
+axs[1, 1].set_ylim(0, 1)
+axs[1, 1].set_title('acceptance rate: ' + str(acc_rate_2))
+plt.show()
+------------------
+
+----- stderr -----
+<>:45: SyntaxWarning: invalid escape sequence '\l'
+<>:46: SyntaxWarning: invalid escape sequence '\l'
+<>:49: SyntaxWarning: invalid escape sequence '\l'
+<>:52: SyntaxWarning: invalid escape sequence '\l'
+<>:45: SyntaxWarning: invalid escape sequence '\l'
+<>:46: SyntaxWarning: invalid escape sequence '\l'
+<>:49: SyntaxWarning: invalid escape sequence '\l'
+<>:52: SyntaxWarning: invalid escape sequence '\l'
+/var/folders/d8/86whr2t12h70n511w7s7cm_w0000gn/T/ipykernel_21685/1583006081.py:45: SyntaxWarning: invalid escape sequence '\l'
+  axs[0, 0].set_title('$\lambda$ = 0.001')
+/var/folders/d8/86whr2t12h70n511w7s7cm_w0000gn/T/ipykernel_21685/1583006081.py:46: SyntaxWarning: invalid escape sequence '\l'
+  axs[0, 0].legend(['Gamma(2,1)', '$M * q_\lambda(x)$'])
+/var/folders/d8/86whr2t12h70n511w7s7cm_w0000gn/T/ipykernel_21685/1583006081.py:49: SyntaxWarning: invalid escape sequence '\l'
+  axs[0, 1].legend(['Gamma(2,1)', '$M * q_\lambda(x)$'])
+/var/folders/d8/86whr2t12h70n511w7s7cm_w0000gn/T/ipykernel_21685/1583006081.py:52: SyntaxWarning: invalid escape sequence '\l'
+  axs[0, 1].set_title('$\lambda$ = 0.5 (optimal)')
+----- stderr -----
+/var/folders/d8/86whr2t12h70n511w7s7cm_w0000gn/T/ipykernel_21685/1583006081.py:45: SyntaxWarning: invalid escape sequence '\l'
+  axs[0, 0].set_title('$\lambda$ = 0.001')
+/var/folders/d8/86whr2t12h70n511w7s7cm_w0000gn/T/ipykernel_21685/1583006081.py:46: SyntaxWarning: invalid escape sequence '\l'
+  axs[0, 0].legend(['Gamma(2,1)', '$M * q_\lambda(x)$'])
+/var/folders/d8/86whr2t12h70n511w7s7cm_w0000gn/T/ipykernel_21685/1583006081.py:49: SyntaxWarning: invalid escape sequence '\l'
+  axs[0, 1].legend(['Gamma(2,1)', '$M * q_\lambda(x)$'])
+/var/folders/d8/86whr2t12h70n511w7s7cm_w0000gn/T/ipykernel_21685/1583006081.py:52: SyntaxWarning: invalid escape sequence '\l'
+  axs[0, 1].set_title('$\lambda$ = 0.5 (optimal)')
+------------------
+
+[31m---------------------------------------------------------------------------[39m
+[31mAttributeError[39m                            Traceback (most recent call last)
+[36mCell[39m[36m [39m[32mIn[1][39m[32m, line 32[39m
+[32m     29[39m lam_1 = [32m0.01[39m
+[32m     30[39m n = [32m10000[39m
+[32m---> [39m[32m32[39m x_lam_1, acc_rate_1 = [43mgamma_rejection_sampling[49m[43m([49m[43malpha[49m[43m,[49m[43m [49m[43mlam_1[49m[43m,[49m[43m [49m[43mn[49m[43m)[49m
+[32m     34[39m alpha = [32m2[39m
+[32m     35[39m lam_2 = [32m1[39m/alpha
+
+[36mCell[39m[36m [39m[32mIn[1][39m[32m, line 22[39m, in [36mgamma_rejection_sampling[39m[34m(alpha, lam, n)[39m
+[32m     20[39m x_prime = np.random.exponential([32m1[39m/lam)
+[32m     21[39m u = np.random.uniform([32m0[39m, [32m1[39m)
+[32m---> [39m[32m22[39m [38;5;28;01mif[39;00m u < [43mgamma_density[49m[43m([49m[43mx_prime[49m[43m,[49m[43m [49m[43malpha[49m[43m)[49m / (M(alpha, lam) * exponential_density(x_prime, lam)):
+[32m     23[39m     x = np.append(x, x_prime)
+[32m     24[39m     acc += [32m1[39m
+
+[36mCell[39m[36m [39m[32mIn[1][39m[32m, line 8[39m, in [36mgamma_density[39m[34m(x, alpha)[39m
+[32m      7[39m [38;5;28;01mdef[39;00m[38;5;250m [39m[34mgamma_density[39m(x, alpha):
+[32m----> [39m[32m8[39m     [38;5;28;01mreturn[39;00m x**(alpha - [32m1[39m) * np.exp(-x) / [43mnp[49m[43m.[49m[43mmath[49m.factorial(alpha - [32m1[39m)
+
+[36mFile [39m[32m~/miniconda3/envs/stoch_sim/lib/python3.12/site-packages/numpy/__init__.py:795[39m, in [36m__getattr__[39m[34m(attr)[39m
+[32m    792[39m     [38;5;28;01mimport[39;00m[38;5;250m [39m[34;01mnumpy[39;00m[34;01m.[39;00m[34;01mchar[39;00m[38;5;250m [39m[38;5;28;01mas[39;00m[38;5;250m [39m[34;01mchar[39;00m
+[32m    793[39m     [38;5;28;01mreturn[39;00m char.chararray
+[32m--> [39m[32m795[39m [38;5;28;01mraise[39;00m [38;5;167;01mAttributeError[39;00m([33mf[39m[33m"[39m[33mmodule [39m[38;5;132;01m{[39;00m[34m__name__[39m[38;5;132;01m!r}[39;00m[33m has no attribute [39m[38;5;132;01m{[39;00mattr[38;5;132;01m!r}[39;00m[33m"[39m)
+
+[31mAttributeError[39m: module 'numpy' has no attribute 'math'
+
