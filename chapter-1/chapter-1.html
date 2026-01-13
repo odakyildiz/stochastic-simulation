@@ -68,6 +68,7 @@
     <link rel="canonical" href="https://odakyildiz.com/stochastic-simulation/chapter-1/chapter-1.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Chapter 2 - Exact Generation of Random Variates" href="../chapter-2/chapter-2.html" />
     <link rel="prev" title="Stochastic Simulation" href="../intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -174,6 +175,15 @@
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Chapter 1 - Introduction</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter-2/chapter-2.html">Chapter 2 - Exact Generation of Random Variates</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter-2/sec-2-1.html">Section 2.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter-2/Example-2-1.html">Example 2.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter-2/Example-2-2.html">Example 2.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter-2/Example-2-5.html">Example 2.5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter-2/Example-2-6.html">Example 2.6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter-2/Example-2-10.html">Example 2.10</a></li>
+</ul>
+</details></li>
 </ul>
 
     </div>
@@ -321,6 +331,7 @@
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estimating-pi">Estimating <span class="math notranslate nohighlight">\(\pi\)</span></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discrete-probability-on-a-computer">Discrete Probability on a Computer</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bayesian-inference-example">Bayesian Inference Example</a></li>
 </ul>
             </nav>
         </div>
@@ -444,7 +455,7 @@ x^2 + y^2 \leq 1
 <div class="cell_output docutils container">
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;&gt;:51: SyntaxWarning: invalid escape sequence &#39;\p&#39;
 &lt;&gt;:51: SyntaxWarning: invalid escape sequence &#39;\p&#39;
-/var/folders/d8/86whr2t12h70n511w7s7cm_w0000gn/T/ipykernel_31858/2980338803.py:51: SyntaxWarning: invalid escape sequence &#39;\p&#39;
+/var/folders/d8/86whr2t12h70n511w7s7cm_w0000gn/T/ipykernel_52491/2980338803.py:51: SyntaxWarning: invalid escape sequence &#39;\p&#39;
   axs[1].set_title(&quot;Estimate of $\pi$&quot;)
 </pre></div>
 </div>
@@ -497,12 +508,59 @@ x^2 + y^2 \leq 1
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x120ecc5c0&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x127fa76b0&gt;]
 </pre></div>
 </div>
 <img alt="../_images/d300d4f7c3851ca5f770021970d38af67279562905af78e0023568629aecd7cf.png" src="../_images/d300d4f7c3851ca5f770021970d38af67279562905af78e0023568629aecd7cf.png" />
 </div>
 </div>
+</section>
+<section id="bayesian-inference-example">
+<h2>Bayesian Inference Example<a class="headerlink" href="#bayesian-inference-example" title="Link to this heading">#</a></h2>
+<p>Recall that, we have a Gaussian prior and likelihood in the form</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+p(x) &amp;= \mathcal{N}(x \mid \mu_0, \sigma_0^2) \\
+p(y \mid x) &amp;= \mathcal{N}(y \mid x, \sigma^2).
+\end{align*}\]</div>
+<p>We have derived this posterior in the notes but below we will demonstrate the visualisation of this posterior.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">prior</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">mu0</span><span class="p">,</span> <span class="n">sigma0</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">mu0</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">/</span> <span class="n">sigma0</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">sigma0</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">likelihood</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">sigma</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">y</span> <span class="o">-</span> <span class="n">x</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">/</span> <span class="n">sigma</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">sigma</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">posterior</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">mu0</span><span class="p">,</span> <span class="n">sigma0</span><span class="p">,</span> <span class="n">sigma</span><span class="p">):</span>
+    <span class="n">mu_p</span> <span class="o">=</span> <span class="p">(</span><span class="n">sigma</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">mu0</span> <span class="o">+</span> <span class="n">sigma0</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">y</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">sigma</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">sigma0</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">sigma_p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">sigma</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">sigma0</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="n">sigma</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">sigma0</span> <span class="o">**</span> <span class="mi">2</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">mu_p</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">/</span> <span class="n">sigma_p</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">sigma_p</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+
+
+<span class="n">xx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="n">mu0</span> <span class="o">=</span> <span class="mf">5.0</span>
+<span class="n">sigma0</span> <span class="o">=</span> <span class="mf">2.0</span>
+<span class="n">sigma</span> <span class="o">=</span> <span class="mf">1.0</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">prior</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">mu0</span><span class="p">,</span> <span class="n">sigma0</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;prior&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">likelihood</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">sigma</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;likelihood&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">posterior</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">mu0</span><span class="p">,</span> <span class="n">sigma0</span><span class="p">,</span> <span class="n">sigma</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;posterior&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/b52f177b6d9788d252e175db7cbb96358ad2bd49de53eea44b230c4e62fb636b.png" src="../_images/b52f177b6d9788d252e175db7cbb96358ad2bd49de53eea44b230c4e62fb636b.png" />
+</div>
+</div>
+<p>You can play by downloading this notebook and changing mean or observation location to gain intuition.</p>
 </section>
 </section>
 
@@ -545,6 +603,15 @@ x^2 + y^2 \leq 1
         <p class="prev-next-title">Stochastic Simulation</p>
       </div>
     </a>
+    <a class="right-next"
+       href="../chapter-2/chapter-2.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Chapter 2 - Exact Generation of Random Variates</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -564,6 +631,7 @@ x^2 + y^2 \leq 1
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estimating-pi">Estimating <span class="math notranslate nohighlight">\(\pi\)</span></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discrete-probability-on-a-computer">Discrete Probability on a Computer</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bayesian-inference-example">Bayesian Inference Example</a></li>
 </ul>
   </nav></div>
 
@@ -588,7 +656,7 @@ By Omer Deniz Akyildiz
 
   <p class="copyright">
     
-      © Copyright 2023.
+      © Copyright 2025.
       <br/>
     
   </p>

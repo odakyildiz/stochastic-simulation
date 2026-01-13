@@ -175,6 +175,15 @@
         </ul>
         <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../chapter-1/chapter-1.html">Chapter 1 - Introduction</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter-2/chapter-2.html">Chapter 2 - Exact Generation of Random Variates</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter-2/sec-2-1.html">Section 2.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter-2/Example-2-1.html">Example 2.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter-2/Example-2-2.html">Example 2.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter-2/Example-2-5.html">Example 2.5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter-2/Example-2-6.html">Example 2.6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter-2/Example-2-10.html">Example 2.10</a></li>
+</ul>
+</details></li>
 </ul>
 
     </div>
@@ -325,13 +334,13 @@
   <section class="tex2jax_ignore mathjax_ignore" id="example-4-2">
 <h1>Example 4.2<a class="headerlink" href="#example-4-2" title="Link to this heading">#</a></h1>
 <p>This is an integration problem with</p>
-<div class="amsmath math notranslate nohighlight" id="equation-116293cd-9948-435b-93e2-3c793a84bd05">
-<span class="eqno">()<a class="headerlink" href="#equation-116293cd-9948-435b-93e2-3c793a84bd05" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-54be51f2-f625-4da0-854c-5fcf065f1c83">
+<span class="eqno">()<a class="headerlink" href="#equation-54be51f2-f625-4da0-854c-5fcf065f1c83" title="Permalink to this equation">#</a></span>\[\begin{align}
 I = \int_0^1 [\cos(50x) + \sin(20 x)]^2 \mathrm{d}x
 \end{align}\]</div>
 <p>The procedure of estimation is simple. We set <span class="math notranslate nohighlight">\(p(x) = \text{Unif}(0, 1)\)</span> and <span class="math notranslate nohighlight">\(\varphi(x) = [\cos(50x) + \sin(20 x)]^2\)</span>. Then we can estimate <span class="math notranslate nohighlight">\(I\)</span> by</p>
-<div class="amsmath math notranslate nohighlight" id="equation-73e624df-cb2b-4526-a7da-12cd20e417d7">
-<span class="eqno">()<a class="headerlink" href="#equation-73e624df-cb2b-4526-a7da-12cd20e417d7" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-22bb3819-a2ef-4429-b773-11b036fa9afb">
+<span class="eqno">()<a class="headerlink" href="#equation-22bb3819-a2ef-4429-b773-11b036fa9afb" title="Permalink to this equation">#</a></span>\[\begin{align}
 \hat{I} = \frac{1}{N} \sum_{i=1}^N \varphi(x_i)
 \end{align}\]</div>
 <p>where <span class="math notranslate nohighlight">\(x_i \sim p(x)\)</span>. The procedure is given below with computed empirical variance.</p>
@@ -380,11 +389,11 @@ I = \int_0^1 [\cos(50x) + \sin(20 x)]^2 \mathrm{d}x
 <div class="cell_output docutils container">
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;&gt;:28: SyntaxWarning: invalid escape sequence &#39;\s&#39;
 &lt;&gt;:28: SyntaxWarning: invalid escape sequence &#39;\s&#39;
-/var/folders/d8/86whr2t12h70n511w7s7cm_w0000gn/T/ipykernel_31940/2860274220.py:28: SyntaxWarning: invalid escape sequence &#39;\s&#39;
+/var/folders/d8/86whr2t12h70n511w7s7cm_w0000gn/T/ipykernel_52608/2860274220.py:28: SyntaxWarning: invalid escape sequence &#39;\s&#39;
   plt.plot(np.arange(1, n+1), I_est[0:n] + 2 * I_std[0:n], &#39;r&#39;, label=&#39;2$\sigma_{\\varphi, N}$&#39;, alpha=1)
 </pre></div>
 </div>
-<img alt="../_images/a7bec03ddde9bc70f5eb19e2e5f1b212bafa12ebb400b656fba7551ce4466c9c.png" src="../_images/a7bec03ddde9bc70f5eb19e2e5f1b212bafa12ebb400b656fba7551ce4466c9c.png" />
+<img alt="../_images/4be9a55f2477bcbc9f2682a79e0fe8c1dc0e119fb5e9c76f1b34858beb1f71f5.png" src="../_images/4be9a55f2477bcbc9f2682a79e0fe8c1dc0e119fb5e9c76f1b34858beb1f71f5.png" />
 </div>
 </div>
 </section>
@@ -445,7 +454,7 @@ By Omer Deniz Akyildiz
 
   <p class="copyright">
     
-      © Copyright 2023.
+      © Copyright 2025.
       <br/>
     
   </p>

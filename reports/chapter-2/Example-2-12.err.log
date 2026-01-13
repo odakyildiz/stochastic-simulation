@@ -92,22 +92,22 @@ plt.show()
 <>:46: SyntaxWarning: invalid escape sequence '\l'
 <>:49: SyntaxWarning: invalid escape sequence '\l'
 <>:52: SyntaxWarning: invalid escape sequence '\l'
-/var/folders/d8/86whr2t12h70n511w7s7cm_w0000gn/T/ipykernel_31876/1583006081.py:45: SyntaxWarning: invalid escape sequence '\l'
+/var/folders/d8/86whr2t12h70n511w7s7cm_w0000gn/T/ipykernel_52539/1583006081.py:45: SyntaxWarning: invalid escape sequence '\l'
   axs[0, 0].set_title('$\lambda$ = 0.001')
-/var/folders/d8/86whr2t12h70n511w7s7cm_w0000gn/T/ipykernel_31876/1583006081.py:46: SyntaxWarning: invalid escape sequence '\l'
+/var/folders/d8/86whr2t12h70n511w7s7cm_w0000gn/T/ipykernel_52539/1583006081.py:46: SyntaxWarning: invalid escape sequence '\l'
   axs[0, 0].legend(['Gamma(2,1)', '$M * q_\lambda(x)$'])
-/var/folders/d8/86whr2t12h70n511w7s7cm_w0000gn/T/ipykernel_31876/1583006081.py:49: SyntaxWarning: invalid escape sequence '\l'
+/var/folders/d8/86whr2t12h70n511w7s7cm_w0000gn/T/ipykernel_52539/1583006081.py:49: SyntaxWarning: invalid escape sequence '\l'
   axs[0, 1].legend(['Gamma(2,1)', '$M * q_\lambda(x)$'])
-/var/folders/d8/86whr2t12h70n511w7s7cm_w0000gn/T/ipykernel_31876/1583006081.py:52: SyntaxWarning: invalid escape sequence '\l'
+/var/folders/d8/86whr2t12h70n511w7s7cm_w0000gn/T/ipykernel_52539/1583006081.py:52: SyntaxWarning: invalid escape sequence '\l'
   axs[0, 1].set_title('$\lambda$ = 0.5 (optimal)')
 ----- stderr -----
-/var/folders/d8/86whr2t12h70n511w7s7cm_w0000gn/T/ipykernel_31876/1583006081.py:45: SyntaxWarning: invalid escape sequence '\l'
+/var/folders/d8/86whr2t12h70n511w7s7cm_w0000gn/T/ipykernel_52539/1583006081.py:45: SyntaxWarning: invalid escape sequence '\l'
   axs[0, 0].set_title('$\lambda$ = 0.001')
-/var/folders/d8/86whr2t12h70n511w7s7cm_w0000gn/T/ipykernel_31876/1583006081.py:46: SyntaxWarning: invalid escape sequence '\l'
+/var/folders/d8/86whr2t12h70n511w7s7cm_w0000gn/T/ipykernel_52539/1583006081.py:46: SyntaxWarning: invalid escape sequence '\l'
   axs[0, 0].legend(['Gamma(2,1)', '$M * q_\lambda(x)$'])
-/var/folders/d8/86whr2t12h70n511w7s7cm_w0000gn/T/ipykernel_31876/1583006081.py:49: SyntaxWarning: invalid escape sequence '\l'
+/var/folders/d8/86whr2t12h70n511w7s7cm_w0000gn/T/ipykernel_52539/1583006081.py:49: SyntaxWarning: invalid escape sequence '\l'
   axs[0, 1].legend(['Gamma(2,1)', '$M * q_\lambda(x)$'])
-/var/folders/d8/86whr2t12h70n511w7s7cm_w0000gn/T/ipykernel_31876/1583006081.py:52: SyntaxWarning: invalid escape sequence '\l'
+/var/folders/d8/86whr2t12h70n511w7s7cm_w0000gn/T/ipykernel_52539/1583006081.py:52: SyntaxWarning: invalid escape sequence '\l'
   axs[0, 1].set_title('$\lambda$ = 0.5 (optimal)')
 ------------------
 

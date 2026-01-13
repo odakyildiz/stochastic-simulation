@@ -175,6 +175,15 @@
         </ul>
         <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../chapter-1/chapter-1.html">Chapter 1 - Introduction</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter-2/chapter-2.html">Chapter 2 - Exact Generation of Random Variates</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter-2/sec-2-1.html">Section 2.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter-2/Example-2-1.html">Example 2.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter-2/Example-2-2.html">Example 2.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter-2/Example-2-5.html">Example 2.5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter-2/Example-2-6.html">Example 2.6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter-2/Example-2-10.html">Example 2.10</a></li>
+</ul>
+</details></li>
 </ul>
 
     </div>
@@ -331,7 +340,7 @@
 p(x) &amp;= \mathcal{N}(x \mid \mu_0, \sigma_0^2) \\
 p(y \mid x) &amp;= \mathcal{N}(y \mid x, \sigma^2).
 \end{align*}\]</div>
-<p>We have derived the posterior in <a class="reference internal" href="Example-3-2.html"><span class="std std-doc">Example 3.2</span></a>.</p>
+<p>We have derived the posterior in <a class="reference internal" href="#../chapter-3/Example-3-2.ipynb"><span class="xref myst">Example 3.2</span></a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
@@ -399,14 +408,14 @@ p(y \mid x) &amp;= \mathcal{N}(y \mid x, \sigma^2).
 <div class="cell_output docutils container">
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;&gt;:52: SyntaxWarning: invalid escape sequence &#39;\s&#39;
 &lt;&gt;:52: SyntaxWarning: invalid escape sequence &#39;\s&#39;
-/var/folders/d8/86whr2t12h70n511w7s7cm_w0000gn/T/ipykernel_31928/1934163954.py:52: SyntaxWarning: invalid escape sequence &#39;\s&#39;
+/var/folders/d8/86whr2t12h70n511w7s7cm_w0000gn/T/ipykernel_52593/1934163954.py:52: SyntaxWarning: invalid escape sequence &#39;\s&#39;
   plt.title(&#39;$\sigma = 0.5$&#39;)
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Area under unnormalised posterior:  0.3228684507565309
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/d8/86whr2t12h70n511w7s7cm_w0000gn/T/ipykernel_31928/1934163954.py:41: DeprecationWarning: `trapz` is deprecated. Use `trapezoid` instead, or one of the numerical integration functions in `scipy.integrate`.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/d8/86whr2t12h70n511w7s7cm_w0000gn/T/ipykernel_52593/1934163954.py:41: DeprecationWarning: `trapz` is deprecated. Use `trapezoid` instead, or one of the numerical integration functions in `scipy.integrate`.
   area = np.trapz(un_posterior(xx, y, mu0, sigma0, sigma), xx)
 </pre></div>
 </div>
@@ -447,11 +456,11 @@ p(y \mid x) &amp;= \mathcal{N}(y \mid x, \sigma^2).
 <div class="cell_output docutils container">
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;&gt;:18: SyntaxWarning: invalid escape sequence &#39;\s&#39;
 &lt;&gt;:18: SyntaxWarning: invalid escape sequence &#39;\s&#39;
-/var/folders/d8/86whr2t12h70n511w7s7cm_w0000gn/T/ipykernel_31928/242914910.py:18: SyntaxWarning: invalid escape sequence &#39;\s&#39;
+/var/folders/d8/86whr2t12h70n511w7s7cm_w0000gn/T/ipykernel_52593/242914910.py:18: SyntaxWarning: invalid escape sequence &#39;\s&#39;
   plt.title(&#39;$\sigma = 0.5$&#39;)
 </pre></div>
 </div>
-<img alt="../_images/5cdff70a5cbb116af811db0a7728ee8ff45b7ce6a274b4ae4e658518665e7114.png" src="../_images/5cdff70a5cbb116af811db0a7728ee8ff45b7ce6a274b4ae4e658518665e7114.png" />
+<img alt="../_images/f44abbca63c2df07517785775909f23e0e4775da2ae40d8a11e25e6b873df24b.png" src="../_images/f44abbca63c2df07517785775909f23e0e4775da2ae40d8a11e25e6b873df24b.png" />
 </div>
 </div>
 </section>
@@ -512,7 +521,7 @@ By Omer Deniz Akyildiz
 
   <p class="copyright">
     
-      © Copyright 2023.
+      © Copyright 2025.
       <br/>
     
   </p>
