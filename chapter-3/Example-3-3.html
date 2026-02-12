@@ -197,6 +197,21 @@
 <li class="toctree-l2"><a class="reference internal" href="Example-3-8.html">Example 3.8</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter-4/chapter-4.html">Chapter 4 - Markov Chain Monte Carlo</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter-4/Example-4-1.html">Example 4.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter-4/Example-4-2.html">Example 4.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter-4/Example-4-3.html">Example 4.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter-4/Example-4-4.html">Example 4.4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter-4/Example-4-5.html">Example 4.5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter-4/Example-4-6.html">Example 4.6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter-4/Example-4-7.html">Example 4.7</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter-4/Example-4-8.html">Example 4.8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter-4/Example-4-9.html">Example 4.9</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter-4/Example-4-10.html">Example 4.10</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter-4/Example-4-12.html">Example 4.12</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter-4/Example-4-17.html">Example 4.17</a></li>
+</ul>
+</details></li>
 </ul>
 
     </div>
@@ -348,8 +363,8 @@
 <h1>Example 3.3<a class="headerlink" href="#example-3-3" title="Link to this heading">#</a></h1>
 <p>This is an estimation problem of <span class="math notranslate nohighlight">\(\mathbb{P}(X &gt; 2)\)</span> where <span class="math notranslate nohighlight">\(X \sim \mathcal{N}(0, 1)\)</span>.</p>
 <p>As noted in the exercise, the estimator is given as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-186b4091-8a0f-4bb2-912c-7b5a433c0916">
-<span class="eqno">(3)<a class="headerlink" href="#equation-186b4091-8a0f-4bb2-912c-7b5a433c0916" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-7579039f-9ec7-41c3-8313-86c24082f2a7">
+<span class="eqno">(3)<a class="headerlink" href="#equation-7579039f-9ec7-41c3-8313-86c24082f2a7" title="Permalink to this equation">#</a></span>\[\begin{align}
 P(X &gt; 2) \approx \frac{1}{N} \sum_{i=1}^N \mathbf{1}_{\{X_i &gt; 2\}}(X_i)
 \end{align}\]</div>
 <p>where <span class="math notranslate nohighlight">\(X_i \sim \mathcal{N}(0, 1)\)</span>. The implementation is below.</p>
@@ -403,15 +418,15 @@ P(X &gt; 2) \approx \frac{1}{N} \sum_{i=1}^N \mathbf{1}_{\{X_i &gt; 2\}}(X_i)
 <div class="cell_output docutils container">
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;&gt;:34: SyntaxWarning: invalid escape sequence &#39;\s&#39;
 &lt;&gt;:34: SyntaxWarning: invalid escape sequence &#39;\s&#39;
-/var/folders/d8/86whr2t12h70n511w7s7cm_w0000gn/T/ipykernel_18354/1129436063.py:34: SyntaxWarning: invalid escape sequence &#39;\s&#39;
+/var/folders/d8/86whr2t12h70n511w7s7cm_w0000gn/T/ipykernel_14188/1129436063.py:34: SyntaxWarning: invalid escape sequence &#39;\s&#39;
   plt.plot(n_list, Prob_a + 2*np.sqrt(var_a), &#39;r--&#39;, label=&#39;2$\sigma_{\\varphi, N}$&#39;, alpha=0.5)
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/d8/86whr2t12h70n511w7s7cm_w0000gn/T/ipykernel_18354/1129436063.py:15: DeprecationWarning: `trapz` is deprecated. Use `trapezoid` instead, or one of the numerical integration functions in `scipy.integrate`.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/d8/86whr2t12h70n511w7s7cm_w0000gn/T/ipykernel_14188/1129436063.py:15: DeprecationWarning: `trapz` is deprecated. Use `trapezoid` instead, or one of the numerical integration functions in `scipy.integrate`.
   I_a = np.trapz(p(xx[xx &gt; a]), xx[xx &gt; a]) # True value
 </pre></div>
 </div>
-<img alt="../_images/d04e13f465a37925e6f02bef0ed23ab33527d436b7a6ce0bac42ea4cb966cbd0.png" src="../_images/d04e13f465a37925e6f02bef0ed23ab33527d436b7a6ce0bac42ea4cb966cbd0.png" />
+<img alt="../_images/9ecd54f9822c19393c552f00fa111aa428aa72a20086700b6990bda6da3af6b3.png" src="../_images/9ecd54f9822c19393c552f00fa111aa428aa72a20086700b6990bda6da3af6b3.png" />
 </div>
 </div>
 </section>

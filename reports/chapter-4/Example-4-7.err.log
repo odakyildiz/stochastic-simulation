@@ -1,0 +1,92 @@
+Traceback (most recent call last):
+  File "/Users/odakyildiz/miniconda3/envs/stoch_sim/lib/python3.12/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+  File "/Users/odakyildiz/miniconda3/envs/stoch_sim/lib/python3.12/site-packages/nbclient/client.py", line 1319, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/odakyildiz/miniconda3/envs/stoch_sim/lib/python3.12/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/odakyildiz/miniconda3/envs/stoch_sim/lib/python3.12/asyncio/base_events.py", line 687, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/Users/odakyildiz/miniconda3/envs/stoch_sim/lib/python3.12/site-packages/nbclient/client.py", line 709, in async_execute
+    await self.async_execute_cell(
+  File "/Users/odakyildiz/miniconda3/envs/stoch_sim/lib/python3.12/site-packages/nbclient/client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/Users/odakyildiz/miniconda3/envs/stoch_sim/lib/python3.12/site-packages/nbclient/client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+import numpy as np
+import matplotlib.pyplot as plt
+
+rng = np.random.default_rng(24)
+
+# banana function for testing MCMC
+def log_banana(x, y):
+    return -x**2 / 10 - y**2 / 10 - 2 * (y - x**2)**2
+
+N = 1000000
+samples_RW = np.zeros((2, N))
+
+# initial values
+x = 0
+y = 0
+samples_RW[:, 0] = np.array([x, y])
+# parameters
+gamma = 0.005
+
+sigma_rw = 0.5
+
+burnin = 200
+
+for n in range(1, N):
+    # random walk
+    x_s = samples_RW[:, n-1] + sigma_rw * np.random.randn(2)
+    # metropolis
+    u = rng.uniform(0, 1)
+
+    if np.log(u) < log_banana(x_s[0], x_s[1]) - log_banana(samples_RW[0, n-1], samples_RW[1, n-1]):
+        samples_RW[:, n] = x_s
+    else:
+        samples_RW[:, n] = samples_RW[:, n-1]
+
+
+# for surf plot banana 2d
+x_bb = np.linspace(-4, 4, 100)
+y_bb = np.linspace(-2, 6, 100)
+X_bb, Y_bb = np.meshgrid(x_bb, y_bb)
+Z_bb = np.exp(log_banana(X_bb, Y_bb))
+
+plt.figure(figsize=(15, 5))
+# make fonts bigger
+plt.rcParams.update({'font.size': 20})
+plt.subplot(1, 2, 1)
+cnt = plt.contourf(X_bb, Y_bb, Z_bb, 100, cmap='RdBu')
+for c in cnt.collections:
+    c.set_edgecolor("face")
+plt.title('Target Distribution')
+
+plt.subplot(1, 2, 2)
+plt.hist2d(samples_RW[0, burnin:n], samples_RW[1, burnin:n], 100, cmap='RdBu', range=[[-4, 4], [-2, 6]], density=True)
+# remove the white edges from plt.hist2d
+for c in cnt.collections:
+    c.set_edgecolor("face")
+
+plt.title('Random Walk Metropolis')
+plt.show()
+------------------
+
+
+[31m---------------------------------------------------------------------------[39m
+[31mAttributeError[39m                            Traceback (most recent call last)
+[36mCell[39m[36m [39m[32mIn[1][39m[32m, line 47[39m
+[32m     45[39m plt.subplot([32m1[39m, [32m2[39m, [32m1[39m)
+[32m     46[39m cnt = plt.contourf(X_bb, Y_bb, Z_bb, [32m100[39m, cmap=[33m'[39m[33mRdBu[39m[33m'[39m)
+[32m---> [39m[32m47[39m [38;5;28;01mfor[39;00m c [38;5;129;01min[39;00m [43mcnt[49m[43m.[49m[43mcollections[49m:
+[32m     48[39m     c.set_edgecolor([33m"[39m[33mface[39m[33m"[39m)
+[32m     49[39m plt.title([33m'[39m[33mTarget Distribution[39m[33m'[39m)
+
+[31mAttributeError[39m: 'QuadContourSet' object has no attribute 'collections'
+

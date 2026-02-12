@@ -197,6 +197,21 @@
 <li class="toctree-l2"><a class="reference internal" href="Example-3-8.html">Example 3.8</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter-4/chapter-4.html">Chapter 4 - Markov Chain Monte Carlo</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter-4/Example-4-1.html">Example 4.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter-4/Example-4-2.html">Example 4.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter-4/Example-4-3.html">Example 4.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter-4/Example-4-4.html">Example 4.4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter-4/Example-4-5.html">Example 4.5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter-4/Example-4-6.html">Example 4.6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter-4/Example-4-7.html">Example 4.7</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter-4/Example-4-8.html">Example 4.8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter-4/Example-4-9.html">Example 4.9</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter-4/Example-4-10.html">Example 4.10</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter-4/Example-4-12.html">Example 4.12</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter-4/Example-4-17.html">Example 4.17</a></li>
+</ul>
+</details></li>
 </ul>
 
     </div>
@@ -347,13 +362,13 @@
   <section class="tex2jax_ignore mathjax_ignore" id="example-3-2">
 <h1>Example 3.2<a class="headerlink" href="#example-3-2" title="Link to this heading">#</a></h1>
 <p>This is an integration problem with</p>
-<div class="amsmath math notranslate nohighlight" id="equation-0cb0ca36-6b2c-436a-8721-dbe6a825348e">
-<span class="eqno">(1)<a class="headerlink" href="#equation-0cb0ca36-6b2c-436a-8721-dbe6a825348e" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-824950fb-86be-4d7b-b65b-3cc1bbf92d85">
+<span class="eqno">(1)<a class="headerlink" href="#equation-824950fb-86be-4d7b-b65b-3cc1bbf92d85" title="Permalink to this equation">#</a></span>\[\begin{align}
 I = \int_0^1 [\cos(50x) + \sin(20 x)]^2 \mathrm{d}x
 \end{align}\]</div>
 <p>The procedure of estimation is simple. We set <span class="math notranslate nohighlight">\(p(x) = \text{Unif}(0, 1)\)</span> and <span class="math notranslate nohighlight">\(\varphi(x) = [\cos(50x) + \sin(20 x)]^2\)</span>. Then we can estimate <span class="math notranslate nohighlight">\(I\)</span> by</p>
-<div class="amsmath math notranslate nohighlight" id="equation-42be9192-c800-4566-a358-23acc3ef565e">
-<span class="eqno">(2)<a class="headerlink" href="#equation-42be9192-c800-4566-a358-23acc3ef565e" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-9c40e227-dc61-42e7-91b7-2b1233cca3d9">
+<span class="eqno">(2)<a class="headerlink" href="#equation-9c40e227-dc61-42e7-91b7-2b1233cca3d9" title="Permalink to this equation">#</a></span>\[\begin{align}
 \hat{I} = \frac{1}{N} \sum_{i=1}^N \varphi(x_i)
 \end{align}\]</div>
 <p>where <span class="math notranslate nohighlight">\(x_i \sim p(x)\)</span>. The procedure is given below with computed empirical variance.</p>
@@ -402,11 +417,11 @@ I = \int_0^1 [\cos(50x) + \sin(20 x)]^2 \mathrm{d}x
 <div class="cell_output docutils container">
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;&gt;:28: SyntaxWarning: invalid escape sequence &#39;\s&#39;
 &lt;&gt;:28: SyntaxWarning: invalid escape sequence &#39;\s&#39;
-/var/folders/d8/86whr2t12h70n511w7s7cm_w0000gn/T/ipykernel_18344/2860274220.py:28: SyntaxWarning: invalid escape sequence &#39;\s&#39;
+/var/folders/d8/86whr2t12h70n511w7s7cm_w0000gn/T/ipykernel_14185/2860274220.py:28: SyntaxWarning: invalid escape sequence &#39;\s&#39;
   plt.plot(np.arange(1, n+1), I_est[0:n] + 2 * I_std[0:n], &#39;r&#39;, label=&#39;2$\sigma_{\\varphi, N}$&#39;, alpha=1)
 </pre></div>
 </div>
-<img alt="../_images/20392d44539812fec8d4175d33c231d945963666062f61e9da3e782e797b1a7d.png" src="../_images/20392d44539812fec8d4175d33c231d945963666062f61e9da3e782e797b1a7d.png" />
+<img alt="../_images/00fabb73926306e5cc4387c085766775de498d941c3cf12d074647151ef7758b.png" src="../_images/00fabb73926306e5cc4387c085766775de498d941c3cf12d074647151ef7758b.png" />
 </div>
 </div>
 </section>

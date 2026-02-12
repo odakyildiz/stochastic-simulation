@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Chapter 4 - Importance sampling &#8212; Stochastic Simulation</title>
+    <title>Chapter 4 - Markov Chain Monte Carlo &#8212; Stochastic Simulation</title>
   
   
   
@@ -61,11 +61,15 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'chapter-4/chapter-4';</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="canonical" href="https://odakyildiz.com/stochastic-simulation/chapter-4/chapter-4.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Example 4.1" href="Example-4-1.html" />
+    <link rel="prev" title="Example 3.8" href="../chapter-3/Example-3-8.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -116,8 +120,6 @@
     <div class="bd-container__inner bd-page-width">
       
       
-      
-        
       
       <dialog id="pst-primary-sidebar-modal"></dialog>
       <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
@@ -171,7 +173,7 @@
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../chapter-1/chapter-1.html">Chapter 1 - Introduction</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../chapter-2/chapter-2.html">Chapter 2 - Exact Generation of Random Variates</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../chapter-2/sec-2-1.html">Section 2.1</a></li>
@@ -183,8 +185,31 @@
 <li class="toctree-l2"><a class="reference internal" href="../chapter-2/Example-2-9.html">Example 2.13</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter-2/Example-2-10.html">Example 2.10</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter-2/Example-2-13.html">Example 2.13</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../chapter-2/Example-2-15.html">Example 2.12</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../chapter-2/Example-2-16.html">Example 3.5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter-2/Example-2-15.html">Example 2.15</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter-2/Example-2-16.html">Example 2.16</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter-3/chapter-3.html">Chapter 3 - Monte Carlo Integration</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter-3/Example-3-2.html">Example 3.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter-3/Example-3-3.html">Example 3.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter-3/Example-3-4.html">Example 3.4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter-3/Example-3-6.html">Example 3.6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter-3/Example-3-8.html">Example 3.8</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Chapter 4 - Markov Chain Monte Carlo</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="Example-4-1.html">Example 4.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Example-4-2.html">Example 4.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Example-4-3.html">Example 4.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Example-4-4.html">Example 4.4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Example-4-5.html">Example 4.5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Example-4-6.html">Example 4.6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Example-4-7.html">Example 4.7</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Example-4-8.html">Example 4.8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Example-4-9.html">Example 4.9</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Example-4-10.html">Example 4.10</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Example-4-12.html">Example 4.12</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Example-4-17.html">Example 4.17</a></li>
 </ul>
 </details></li>
 </ul>
@@ -320,7 +345,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Chapter 4 - Importance sampling</h1>
+    <h1>Chapter 4 - Markov Chain Monte Carlo</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -334,9 +359,25 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="chapter-4-importance-sampling">
-<h1>Chapter 4 - Importance sampling<a class="headerlink" href="#chapter-4-importance-sampling" title="Link to this heading">#</a></h1>
-<p>This chapter is about importance sampling and various estimation problems that can be solved with it.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="chapter-4-markov-chain-monte-carlo">
+<h1>Chapter 4 - Markov Chain Monte Carlo<a class="headerlink" href="#chapter-4-markov-chain-monte-carlo" title="Link to this heading">#</a></h1>
+<p>This chapter is about Markov Chain Monte Carlo methods for sampling from a probability distribution.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Example-4-1.html">Example 4.1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Example-4-2.html">Example 4.2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Example-4-3.html">Example 4.3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Example-4-4.html">Example 4.4</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Example-4-5.html">Example 4.5</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Example-4-6.html">Example 4.6</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Example-4-7.html">Example 4.7</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Example-4-8.html">Example 4.8</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Example-4-9.html">Example 4.9</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Example-4-10.html">Example 4.10</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Example-4-12.html">Example 4.12</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Example-4-17.html">Example 4.17</a></li>
+</ul>
+</div>
 </section>
 
     <script type="text/x-thebe-config">
@@ -369,6 +410,24 @@
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="../chapter-3/Example-3-8.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Example 3.8</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Example-4-1.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Example 4.1</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
